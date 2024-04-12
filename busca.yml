@@ -1,1 +1,36 @@
+- name: Buscar valor da chave LogInfo no appsettings.json
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Ler valor da chave LogInfo
+      shell: jq -r '.appSettings.LogInfo' /home/rayan_freitas/appsettings.json
+      register: loginfo_value
+
+    - name: Ler valor da chave Cash
+      shell: jq -r '.appSettings.Cash' /home/rayan_freitas/appsettings.json
+      register: cash_value
+
+    - name: Ler Valor da Chave do MongoConnectionString
+      shell: jq -r '.appSettings.MongoConnectionString' /home/rayan_freitas/appsettings.json
+      register: mongoConnectionString_value
+
+    - name: Ler Valor da Chave do MongoDataBaseConnectionString
+      shell: jq -r '.appSettings.MongoDataBaseConnectionString' /home/rayan_freitas/appsettings.json
+      register: mongoDataBaseConnectionString_value  
+
+    - name: Exibir valor da chave LogInfo
+      debug:
+        msg: "Valor da chave LogInfo é {{ loginfo_value.stdout }}"
+
+    - name: Exibir valor da chave Cash
+      debug:
+        msg: "Valor da chave LogInfo é {{ cash_value.stdout }}" 
+
+    - name: Exibir valor da chave MongoConnectionString
+      debug:
+        msg: "Valor da chave MongoConnectionString é {{ mongoConnectionString_value.stdout}}"
+
+    - name: Exibir valor da chave MongoDataBaseConnectionString
+      debug:
+        msg: "Valor da chave MongoDataBaseConnectionString é {{mongoDataBaseConnectionString_value.stdout}}"           
 
