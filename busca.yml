@@ -16,21 +16,14 @@
 
     - name: Ler Valor da Chave do MongoDataBaseConnectionString
       shell: jq -r '.appSettings.MongoDataBaseConnectionString' appsettings.json
-      register: mongoDataBaseConnectionString_value  
+      register: mongoDataBaseConnectionString_value
 
-    - name: Exibir valor da chave LogInfo
-      debug:
-        msg: "Valor da chave LogInfo é {{ loginfo_value.stdout }}"
-
-    - name: Exibir valor da chave Cash
-      debug:
-        msg: "Valor da chave LogInfo é {{ cash_value.stdout }}" 
-
-    - name: Exibir valor da chave MongoConnectionString
-      debug:
-        msg: "Valor da chave MongoConnectionString é {{ mongoConnectionString_value.stdout}}"
-
-    - name: Exibir valor da chave MongoDataBaseConnectionString
-      debug:
-        msg: "Valor da chave MongoDataBaseConnectionString é {{mongoDataBaseConnectionString_value.stdout}}"           
-
+    - name: Criar arquivo .env
+      template:
+        src: template.env.j2
+        dest: .env
+      vars:
+        loginfo_value: "{{ loginfo_value.stdout }}"
+        cash_value: "{{ cash_value.stdout }}"
+        mongoConnectionString_value: "{{ mongoConnectionString_value.stdout }}"
+        mongoDataBaseConnectionString_value: "{{ mongoDataBaseConnectionString_value.stdout }}"
