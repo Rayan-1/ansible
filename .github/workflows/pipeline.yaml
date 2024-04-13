@@ -19,5 +19,4 @@ jobs:
           sudo apt-get install -y ansible
 
       - name: Run Ansible playbook
-        run: ansible-playbook -i inventory.ini busca.yml
-        working-directory: path/to/your/ansible/playbook
+        run: ansible-playbook -i path/to/your/ansible/playbook/inventory.ini path/to/your/ansible/playbook/busca.yml
