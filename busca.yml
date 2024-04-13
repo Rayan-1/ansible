@@ -3,19 +3,19 @@
   gather_facts: no
   tasks:
     - name: Ler valor da chave LogInfo
-      shell: jq -r '.appSettings.LogInfo' /home/rayan_freitas/appsettings.json
+      shell: jq -r '.appSettings.LogInfo' appsettings.json
       register: loginfo_value
 
     - name: Ler valor da chave Cash
-      shell: jq -r '.appSettings.Cash' /home/rayan_freitas/appsettings.json
+      shell: jq -r '.appSettings.Cash' appsettings.json
       register: cash_value
 
     - name: Ler Valor da Chave do MongoConnectionString
-      shell: jq -r '.appSettings.MongoConnectionString' /home/rayan_freitas/appsettings.json
+      shell: jq -r '.appSettings.MongoConnectionString' appsettings.json
       register: mongoConnectionString_value
 
     - name: Ler Valor da Chave do MongoDataBaseConnectionString
-      shell: jq -r '.appSettings.MongoDataBaseConnectionString' /home/rayan_freitas/appsettings.json
+      shell: jq -r '.appSettings.MongoDataBaseConnectionString' appsettings.json
       register: mongoDataBaseConnectionString_value  
 
     - name: Exibir valor da chave LogInfo
